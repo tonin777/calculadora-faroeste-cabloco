@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Faroeste Caboclo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='renato_russo.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.75);
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .input-group {
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 8px;
+            width: 120px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-weight: bold;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Faroeste Caboclo</h1>
+        <form method="post">
+            <div class="input-group">
+                <label for="anos">Anos</label>
+                <input type="number" name="anos" id="anos" value="0" min="0">
+            </div>
+            <div class="input-group">
+                <label for="meses">Meses</label>
+                <input type="number" name="meses" id="meses" value="0" min="0">
+            </div>
+            <div class="input-group">
+                <label for="dias">Dias</label>
+                <input type="number" name="dias" id="dias" value="0" min="0">
+            </div>
+            <div class="input-group">
+                <label for="horas">Horas</label>
+                <input type="number" name="horas" id="horas" value="0" min="0">
+            </div>
+            <div class="input-group">
+                <label for="minutos">Minutos</label>
+                <input type="number" name="minutos" id="minutos" value="0" min="0">
+            </div>
+            <div class="input-group">
+                <label for="segundos">Segundos</label>
+                <input type="number" name="segundos" id="segundos" value="0" min="0">
+            </div>
+            <button type="submit">Calcular</button>
+        </form>
+
+        {% if resultado %}
+            {% if resultado.erro %}
+                <p>{{ resultado.erro }}</p>
+            {% else %}
+                <h2>Resultado:</h2>
+                <p>🔁 {{ resultado.qtd_faroestes }} vezes a música "Faroeste Caboclo"</p>
+                <p>⏱️ Sobra de {{ resultado.sobra_segundos }} segundos</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
